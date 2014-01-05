@@ -1,0 +1,8 @@
+$3$e chunks = atoi(argv[2]);
+		int bytes = ceil(s / chunks);
+		std::cout << "Splitting into " << chunks << " chunks, each with a size of " << bytes << " bytes" << std::endl;
+		int i;
+		std::vector<std::string> frags;
+		for(i = 0; i < b.size(); i = i + bytes)
+			frags.push_back(b.substr(i, bytes)); 
+		for(i 

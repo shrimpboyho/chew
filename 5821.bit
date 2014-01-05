@@ -1,0 +1,18 @@
+$0$#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <stdlib.h>
+#include <math.h>
+#include <ctime>
+
+inline std::string intToString(int a)
+{
+	std::ostringstream ss;
+	ss << a;
+	return ss.str();
+}
+
+inline std::string slurp (const std::string& path)
+{
+	std::ostringstream buf;

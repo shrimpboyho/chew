@@ -1,0 +1,12 @@
+$2$;
+	}
+	/* Create the pieces */
+	if(argc > 2)
+	{
+		std::string f(argv[1]);
+		std::cout << "Chewing up the file '" << f << "'" << std::endl;
+		std::string b = slurp(f);
+		std::cout << b << std::endl;
+		double s = b.size() * sizeof(char);
+		std::cout << "Size of file: " << s << " bytes" << std::endl;
+		doubl

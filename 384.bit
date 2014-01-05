@@ -1,0 +1,16 @@
+$1$	std::ifstream input (path.c_str());
+	buf << input.rdbuf();
+	return buf.str();
+}
+
+int main(int argc, char* argv[])
+{ 
+	/* Assemble the pieces */
+	if(argc == 1)
+	{
+		return 0;
+	}
+	if(argc == 2)
+	{
+		std::cout << "Please specify the number of chunks you want to split the file into" << std::endl;
+		return 0
