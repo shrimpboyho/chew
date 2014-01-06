@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
         {
             std::vector<BYTE> current = ordered[i];
             mf.seekp(0, std::ios::end);
-            mf.write((const char *) &current[0], current.size() * sizeof (BYTE));
+            mf.write((const char *) &current[0], current.size());
         }
 
         mf.close();
@@ -169,12 +169,12 @@ int main(int argc, char *argv[])
         std::vector < std::vector <BYTE> > frags;
         for (i = 0; i < b.size(); i += bytes)
         {
+            if (i + bytes > s)
+                bytes = s - i;
             std::vector<BYTE> piece;//(b.begin() + i, b.end() + bytes);
             std::copy ( b.begin() + i, b.begin() + i + bytes, std::back_inserter(piece) );
             std::cout << "PIECE SIZE: " << piece.size() << "\n";
             frags.push_back(piece);
-            if (i + bytes > s)
-                bytes = s - i;
         }
 
         srand(time(NULL));
