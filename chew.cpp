@@ -54,13 +54,13 @@ int main(int argc, char *argv[])
                 }
             }
         }
-        std::cout << "SIZE OF ORDERED:" << intToString(ordered[0].size() * sizeof(BYTE)) << "\n";
+        std::cout << "Size of reassembled file: " << intToString(ordered[0].size() * sizeof(BYTE)) << "\n";
         std::ofstream mf("thing", std::ios::binary);
         for (i = 0; i < ordered.size(); i++)
         {
             std::vector<BYTE> current = ordered[i];
             mf.seekp(0, std::ios::end);
-            mf.write((const char *) &current[0], current.size());
+            mf.write((const char *) &current[0], current.size() * sizeof(BYTE));
         }
 
         mf.close();
@@ -104,11 +104,11 @@ int main(int argc, char *argv[])
         std::vector<BYTE>().swap(tempVector);
 
         srand(time(NULL));
+        const char *dollar = "$";
         for (i = 0; i < frags.size(); i++)
         {
             std::string n = intToString(rand() % 1000000) + ".bit";
             std::ofstream mf(n.c_str(), std::ios::binary);
-            const char *dollar = "$";
             mf.write(dollar, 1);
             mf.write(&(intToString(i)[0]), 1);
             mf.write(dollar, 1);
