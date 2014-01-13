@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 {
     /* Assemble the pieces */
-    if (argc == 1)
+    if (argc == 2)
     {
         /* Find all the bitfiles */
         std::vector <std::string> files = getFileNames("./");
@@ -71,13 +71,15 @@ int main(int argc, char *argv[])
 
         return 0;
     }
+    /* If chew is invoked and there are no bitfiles present in the current directory */
     if (argc == 1)
     {
-        std::cout << "Please specify the number of chunks you want to split the file into." << std::endl;
+        std::cout << "Chew cannot find any bitfiles in this directory."
+                  << " If you plan on splitting a file please specify the number of chunks you want to split the file into." << std::endl;
         return 0;
     }
     /* Create the pieces */
-    if (argc > 2)
+    if (argc == 4)
     {
         std::string f(argv[1]);
         std::cout << "Chewing up the file '" << f << "'" << std::endl;
