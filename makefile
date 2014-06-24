@@ -1,2 +1,2 @@
 all:
-	g++ chew.cpp -o chew
+	g++ -std=c++11 chew.cpp -o chew
