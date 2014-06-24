@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
         std::vector <BYTE> b = slurp(f.c_str());
         double s = b.size() * sizeof(unsigned char);
         std::cout << "Size of file: " << s << " bytes" << std::endl;
-        double chunks = atoi(argv[2]);
+        double chunks = std::stoi(argv[2]);
         double bytes = (int) ceil(s / chunks);
         std::cout << "Splitting into " << chunks << " chunks, each with a size of " << bytes << " bytes" << std::endl;
         std::vector < std::vector <BYTE> > frags;
