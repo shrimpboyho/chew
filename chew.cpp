@@ -18,8 +18,7 @@ int main(int argc, char *argv[])
         std::vector <std::string> files = getFileNames("./");
         std::vector <std::string> bitfiles;
         printDivider();
-        int i;
-        for (i = 0; i < files.size(); i++)
+        for (unsigned int i = 0; i < files.size(); i++)
         {
 
             std::cout << files[i] << std::endl;
@@ -28,22 +27,21 @@ int main(int argc, char *argv[])
         }
         printDivider();
         printDivider();
-        for (i = 0; i < bitfiles.size(); i++)
+        for (unsigned int i = 0; i < bitfiles.size(); i++)
             std::cout << bitfiles[i] << std::endl;
         printDivider();
 
         /* Assemble all the bitfiles */
         std::vector < std::vector<BYTE> > bitfilesdata;
-        for (i = 0; i < bitfiles.size(); i++)
+        for (unsigned int i = 0; i < bitfiles.size(); i++)
             bitfilesdata.push_back(slurp(bitfiles[i].c_str()));
         std::vector < std::vector<BYTE> > ordered;
-        int k;
-        for (i = 0; i < bitfiles.size(); i++)
+        for (unsigned int i = 0; i < bitfiles.size(); i++)
         {
             std::string key = "$" + intToString(i) + "$";
             const char *cstr = key.c_str();
             std::vector<BYTE> keyvec(cstr, cstr + strlen(cstr));
-            for (k = 0; k < bitfilesdata.size(); k++)
+            for (unsigned int k = 0; k < bitfilesdata.size(); k++)
             {
                 std::vector<BYTE> data = bitfilesdata[k];
                 if (containsKey(data, keyvec))
@@ -56,7 +54,7 @@ int main(int argc, char *argv[])
         }
         std::cout << "Size of reassembled file: " << intToString(ordered[0].size() * sizeof(BYTE)) << "\n";
         std::ofstream mf("thing", std::ios::binary);
-        for (i = 0; i < ordered.size(); i++)
+        for (unsigned int i = 0; i < ordered.size(); i++)
         {
             std::vector<BYTE> current = ordered[i];
             mf.seekp(0, std::ios::end);
@@ -66,7 +64,7 @@ int main(int argc, char *argv[])
         mf.close();
 
         /* Delete the bitfiles */
-        for (i = 0; i < bitfiles.size(); i++)
+        for (unsigned int i = 0; i < bitfiles.size(); i++)
             remove(bitfiles[i].c_str());
 
         return 0;
@@ -89,9 +87,8 @@ int main(int argc, char *argv[])
         double chunks = atoi(argv[2]);
         double bytes = (int) ceil(s / chunks);
         std::cout << "Splitting into " << chunks << " chunks, each with a size of " << bytes << " bytes" << std::endl;
-        int i;
         std::vector < std::vector <BYTE> > frags;
-        for (i = 0; i < b.size(); i += bytes)
+        for (unsigned int i = 0; i < b.size(); i += bytes)
         {
             if (i + bytes > s)
                 bytes = s - i;
@@ -107,7 +104,7 @@ int main(int argc, char *argv[])
 
         srand(time(NULL));
         const char *dollar = "$";
-        for (i = 0; i < frags.size(); i++)
+        for (unsigned int i = 0; i < frags.size(); i++)
         {
             std::string n = intToString(rand() % 1000000) + ".bit";
             std::ofstream mf(n.c_str(), std::ios::binary);
