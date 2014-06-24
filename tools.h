@@ -73,8 +73,7 @@ inline bool checkBitExt(std::string t)
 
 inline bool containsKey(std::vector<BYTE> thing, std::vector<BYTE> key)
 {
-    int i;
-    for (i = 0; i < key.size(); i++)
+    for (unsigned int i = 0; i < key.size(); i++)
         if (key[i] != thing[i])
             return false;
     return true;
