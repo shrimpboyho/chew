@@ -115,8 +115,29 @@ int main(int argc, char *argv[])
             mf.close();
         }
     }
-    if (argc == 5)
-    {}
+
+    if (argc == 5 && argv[2]=="-s")
+    {        
+        std::string f(argv[3]);
+        std::cout << "Chewing up the file '" << f << "'" << std::endl;
+        std::vector <BYTE> b = slurp(f.c_str());
+        double s = b.size() * sizeof(unsigned char);
+        std::cout << "Size of file: " << s << " bytes" << std::endl;
+        double bytes = std::stoi(argv[4]);
+        double chunks = (int) ceil(s / bytes);
+        std::cout << "Splitting into " << chunks << " chunks, each with a size of " << bytes << " bytes" << std::endl;
+        std::vector < std::vector <BYTE> > frags;
+        for (unsigned int i = 0; i < b.size(); i += chunks)
+        {
+            if (i + chunks > s)
+                chunks = s - i;
+            std::vector<BYTE> piece;
+            std::copy ( b.begin() + i, b.begin() + i + chunks, std::back_inserter(piece) );
+            std::cout << "PIECE SIZE: " << piece.size() << "\n";
+            frags.push_back(piece);
+        }      
+    }
+
     if (argc < 2 || argc > 5)
     {
         std::cout<<"Usage:"<<std::endl
