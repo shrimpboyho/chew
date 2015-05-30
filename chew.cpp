@@ -115,6 +115,14 @@ int main(int argc, char *argv[])
             mf.close();
         }
     }
-
+    if (argc == 5)
+    {}
+    if (argc < 2 || argc > 5)
+    {
+        std::cout<<"Usage:"<<std::endl
+                 <<"chew filename #_OF_CHUNKS ENCRYPT_KEY"<<std::endl
+                 <<"chew -s filename CHUNK_SIZE ENCRYPT_KEY"<<std::endl;
+        return 2;
+    }
     return 0;
 }
