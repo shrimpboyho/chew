@@ -6,13 +6,13 @@
 
 ##How to Use
 
-To split a file invoke ```chew``` with the filename, followed by the number of chunks you want to file split into, followed by an encyption key you want. Each chunk will have a ```.bit``` extension, and will have a randomly generated file name.
+To split a file invoke ```chew``` with the filename, followed by the number of chunks you want to file split into, followed by an encryption key you want. Each chunk will have a randomly generated file name, and a ```.bit``` extension.
 ```bash
 # WARNING: ONLY SPLIT INTO A MAX OF 10 TO AVOID FILE DETERIORATION
 $ chew file.avi 7 82ha23fj
 ```
 
-To assemble a file, ```cd``` into a directory with ```bit``` files, and invoke the following command with the encryption key.
+To assemble a file, ```cd``` into a directory with ```.bit``` files, and invoke the following command with the encryption key.
 ```bash
 $ chew 82ha23fj
 ```
