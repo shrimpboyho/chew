@@ -2,7 +2,7 @@
 ====
 <img src="ninja.jpg" width="50%">
 
-```chew``` aims to be a command line utility that one can use to share files in an encyrpted, extremely secret manner. ```chew``` splits a file into several pieces and encrypts it. It can also assemble the file back together.
+```chew``` aims to be a command line utility that you can use to share files in an encrypted, extremely secret manner. ```chew``` splits a file into several pieces and encrypts it. It can also assemble the file back together.
 
 ##How to Use
 
